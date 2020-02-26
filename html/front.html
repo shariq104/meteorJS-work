@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <title>Front for test</title>
+    <script src="handlebars-v4.7.3.js"></script>
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+    <!-- <script type='text/javascript' src='script.js'></script> -->
+</head>
+
+<body>
+    <button onclick="getTable()">click</button>
+    <div id="itemData">
+
+    </div>
+
+    <script id="tableTemplate" type="text/x-handlebars-template">
+
+        <table id="fullTable">
+            <tr>
+                <th>Field 1</th>
+                <th>Field 2</th>
+                <th>Field 3</th>
+                <th>Field 4</th>
+                <th>Field 5</th>
+                <th>Field 6</th>
+                <th>Field 7</th>
+                <th>Field 8</th>
+                <th>Field 9</th>
+                <th>Field 10</th>
+                <th>ActiveIndicator</th>
+                <th>EffectiveDate</th>
+                <th>ExpiryDate</th>
+                
+            </tr>
+
+            {{#each item}}
+            <tr>
+                <td>{{Field1}}</td>
+                <td>{{Field2}}</td>
+                <td>{{Field3}}</td>
+                <td>{{Field4}}</td>
+                <td>{{Field5}}</td>
+                <td>{{Field6}}</td>
+                <td>{{Field7}}</td>
+                <td>{{Field8}}</td>
+                <td>{{Field9}}</td>
+                <td>{{Field10}}</td>
+                <td><input type="text" value="{{ActiveIndicator}}"></input></td>
+                <td><input type="text" value="{{EffectiveDate}}"></input></td>
+                <td><input type="text" value="{{ExpiryDate}}"></input></td>
+                
+            </tr>
+            {{/each}}
+        </table>
+    </script>
+
+    <script type="text/javascript">
+        var itemInfo = document.getElementById("tableTemplate").innerHTML;
+        var template = Handlebars.compile(itemInfo);
+
+        var itemData = template({
+            item: [
+                {
+                    Field1: "abc",
+                    Field2: "abc",
+                    Field3: "abc",
+                    Field4: "abc",
+                    Field5: "abc",
+                    Field6: "abc",
+                    Field7: "abc",
+                    Field8: "abc",
+                    Field9: "abc",
+                    Field10: "abc",
+                    ActiveIndicator: "Y",
+                    EffectiveDate: "asdasd",
+                    ExpiryDate: "tyutyu"
+                },
+                {
+                    Field1: "abc",
+                    Field2: "abc",
+                    Field3: "abc",
+                    Field4: "abc",
+                    Field5: "abc",
+                    Field6: "abc",
+                    Field7: "abc",
+                    Field8: "abc",
+                    Field9: "abc",
+                    Field10: "abc",
+                    ActiveIndicator: "Y",
+                    EffectiveDate: "asdasd",
+                    ExpiryDate: "t213u"
+                },
+                {
+                    Field1: "abc",
+                    Field2: "abc",
+                    Field3: "abc",
+                    Field4: "abc",
+                    Field5: "abc",
+                    Field6: "abc",
+                    Field7: "abc",
+                    Field8: "abc",
+                    Field9: "abc",
+                    Field10: "abc",
+                    ActiveIndicator: "Y",
+                    EffectiveDate: "asdasd",
+                    ExpiryDate: "ty456u"
+                },
+                {
+                    Field1: "abc",
+                    Field2: "abc",
+                    Field3: "abc",
+                    Field4: "abc",
+                    Field5: "abc",
+                    Field6: "abc",
+                    Field7: "abc",
+                    Field8: "abc",
+                    Field9: "abc",
+                    Field10: "abc",
+                    ActiveIndicator: "Y",
+                    EffectiveDate: "asdasd",
+                    ExpiryDate: "t123"
+                },
+            ]
+        }
+        );
+
+        document.getElementById("itemData").innerHTML += itemData;
+
+
+        function getTable() {
+            var myRows = [];
+            var $headers = $("th");
+            var $rows = $("tbody tr").each(function (index) {
+                $cells = $(this).find("td");
+                myRows[index] = {};
+                $cells.each(function (cellIndex) {
+
+                    if (cellIndex < 10)
+                        myRows[index][$($headers[cellIndex]).html()] = $(this).html();
+
+                    if (cellIndex >= 10) {
+                        var doc = $($(this).html());
+                        doc = doc[0].value;
+                        myRows[index][$($headers[cellIndex]).html()] = doc;
+                    }
+                });
+            });
+
+            var myObj = {};
+            myObj.myrows = myRows;
+            console.log(myObj);
+        }
+
+
+
+
+    </script>
+
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+
+</body>
+
+
+
+</html>
