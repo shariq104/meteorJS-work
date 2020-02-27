@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import itemList from './components/list';
 
 import './main.html';
 
@@ -7,7 +8,7 @@ import './main.html';
 const App = () =>{
   return (
     <div>
-      React App #2
+     <ItemList />
     </div>
   );
 };
