@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import itemList from './components/list';
 
-import './main.html';
-
+import ListOfItems from './components/listFile';
 
 const App = () =>{
   return (
     <div>
-     <ItemList />
+     <ListOfItems />
     </div>
   );
 };
 
-Meteor.startup(()=> {
-  ReactDOM.render(<App/>, document.querySelector('.container'))
 
+Meteor.startup(()=> {
+  // debugger;
+  ReactDOM.render(<App />, document.querySelector('.container'))
 });
