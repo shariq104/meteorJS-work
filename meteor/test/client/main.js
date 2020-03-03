@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import ListOfItems from './components/listFile';
+import Counters from './components/counters';
 
 const App = () =>{
   return (
@@ -10,9 +11,16 @@ const App = () =>{
     </div>
   );
 };
+const Counts = () =>{
+  return (
+    <div>
+     <Counters />
+    </div>
+  );
+};
 
 
 Meteor.startup(()=> {
-  // debugger;
-  ReactDOM.render(<App />, document.querySelector('.container'))
+  ReactDOM.render(<App />, document.querySelector('.container'));
+  ReactDOM.render(<Counts />, document.querySelector('.counters'));
 });
