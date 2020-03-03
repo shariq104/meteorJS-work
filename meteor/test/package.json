@@ -13,6 +13,7 @@
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "meteor-node-stubs": "^1.0.0",
+    "piechart": "^1.0.0",
     "react": "^16.13.0",
     "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^16.13.0"

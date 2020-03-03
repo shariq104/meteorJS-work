@@ -29,6 +29,8 @@ const ItemDetail = ({ item }) => {
         var expdate = expdate.getFullYear() + '-' + month + '-' + day;
     }
 
+    var status = "Active";
+
     //props.item is accessible
     return (
 
@@ -49,6 +51,9 @@ const ItemDetail = ({ item }) => {
             <td id={item._id}><input type="text" value={actind}></input></td>
             <td id={item._id}><input type="date" value={efdate}></input></td>
             <td id={item._id}><input type="date" value={expdate}></input></td>
+            <td id={item._id}><span>{status}</span></td>
+            {/* <td id={item._id}><input type="text" value={status} readOnly></input></td> */}
+
 
         </tr>
 

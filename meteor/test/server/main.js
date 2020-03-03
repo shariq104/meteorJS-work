@@ -52,8 +52,12 @@ Meteor.startup(() => {
   };
 
 
-  Meteor.publish('list', function(){
-    return itemList.find({}, {limit:20});
+  Meteor.publish('list', function(per_page){
+    return itemList.find({}, {limit: per_page});
+  });
+
+  Meteor.publish('count', function(){
+    return itemList.find({});
   });
 
 });

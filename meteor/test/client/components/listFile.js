@@ -3,6 +3,9 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { itemList } from '../../imports/collections/list';
 import ItemDetail from './itemDetail';
 
+
+const PER_PAGE = 20;
+
 const ListOfItems = (props) => {
     // debugger;
     console.log(props.list);
@@ -25,6 +28,7 @@ const ListOfItems = (props) => {
                     <th>ActiveIndicator</th>
                     <th>EffectiveDate</th>
                     <th>ExpiryDate</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
             
@@ -34,13 +38,15 @@ const ListOfItems = (props) => {
                     </tbody>
 
             </table>
+            <br/>
+            <button onClick={()=>{Meteor.subscribe('list', 40)}} className="btn btn-primary">Load More</button>
         </div>
     );
 };
 
 export default withTracker(() => {
     // set up subscription
-    Meteor.subscribe('list');
+    Meteor.subscribe('list',PER_PAGE);
 
     // return object -> will be sent as props
     return { list: itemList.find({}).fetch() };
